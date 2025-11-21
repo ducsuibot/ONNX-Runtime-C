@@ -1,0 +1,706 @@
+================================================================================
+                            ONNX GRAPH STRUCTURE                                
+                          Total Nodes: 175                                      
+================================================================================
+ ID  | OP TYPE             | NODE NAME                     | I/O DETAILS        
+-----|---------------------|-------------------------------|--------------------
+ 000 | Conv                | resnetv17_conv0_fwd           | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ data, resnetv17_conv0_weight ]
+     |                     |                               |   OUT:[ resnetv17_conv0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 001 | BatchNormalization  | resnetv17_batchnorm0_fwd      | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_conv0_fwd, resnetv17_batchnorm0_gamma, resnetv17_batchnorm0_beta, resnetv17_batchnorm0_running_mean, resnetv17_batchnorm0_running_var ]
+     |                     |                               |   OUT:[ resnetv17_batchnorm0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 002 | Relu                | resnetv17_relu0_fwd           | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_batchnorm0_fwd ]
+     |                     |                               |   OUT:[ resnetv17_relu0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 003 | MaxPool             | resnetv17_pool0_fwd           | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_relu0_fwd ]
+     |                     |                               |   OUT:[ resnetv17_pool0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 004 | Conv                | resnetv17_stage1_conv0_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_pool0_fwd, resnetv17_stage1_conv0_weight, resnetv17_stage1_conv0_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 005 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv0_fwd, resnetv17_stage1_batchnorm0_gamma, resnetv17_stage1_batchnorm0_beta, resnetv17_stage1_batchnorm0_running_mean, resnetv17_stage1_batchnorm0_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 006 | Relu                | resnetv17_stage1_relu0_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm0_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage1_relu0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 007 | Conv                | resnetv17_stage1_conv1_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_relu0_fwd, resnetv17_stage1_conv1_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 008 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv1_fwd, resnetv17_stage1_batchnorm1_gamma, resnetv17_stage1_batchnorm1_beta, resnetv17_stage1_batchnorm1_running_mean, resnetv17_stage1_batchnorm1_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 009 | Relu                | resnetv17_stage1_relu1_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm1_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage1_relu1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 010 | Conv                | resnetv17_stage1_conv2_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_relu1_fwd, resnetv17_stage1_conv2_weight, resnetv17_stage1_conv2_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 011 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv2_fwd, resnetv17_stage1_batchnorm2_gamma, resnetv17_stage1_batchnorm2_beta, resnetv17_stage1_batchnorm2_running_mean, resnetv17_stage1_batchnorm2_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 012 | Conv                | resnetv17_stage1_conv3_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_pool0_fwd, resnetv17_stage1_conv3_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 013 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv3_fwd, resnetv17_stage1_batchnorm3_gamma, resnetv17_stage1_batchnorm3_beta, resnetv17_stage1_batchnorm3_running_mean, resnetv17_stage1_batchnorm3_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 014 | Add                 | resnetv17_stage1__plus0       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm2_fwd, resnetv17_stage1_batchnorm3_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage1__plus0 ]
+-----+---------------------+-------------------------------+--------------------
+ 015 | Relu                | resnetv17_stage1_activation0  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1__plus0 ]
+     |                     |                               |   OUT:[ resnetv17_stage1_activation0 ]
+-----+---------------------+-------------------------------+--------------------
+ 016 | Conv                | resnetv17_stage1_conv4_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_activation0, resnetv17_stage1_conv4_weight, resnetv17_stage1_conv4_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 017 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv4_fwd, resnetv17_stage1_batchnorm4_gamma, resnetv17_stage1_batchnorm4_beta, resnetv17_stage1_batchnorm4_running_mean, resnetv17_stage1_batchnorm4_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 018 | Relu                | resnetv17_stage1_relu2_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm4_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage1_relu2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 019 | Conv                | resnetv17_stage1_conv5_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_relu2_fwd, resnetv17_stage1_conv5_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 020 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv5_fwd, resnetv17_stage1_batchnorm5_gamma, resnetv17_stage1_batchnorm5_beta, resnetv17_stage1_batchnorm5_running_mean, resnetv17_stage1_batchnorm5_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 021 | Relu                | resnetv17_stage1_relu3_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm5_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage1_relu3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 022 | Conv                | resnetv17_stage1_conv6_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_relu3_fwd, resnetv17_stage1_conv6_weight, resnetv17_stage1_conv6_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 023 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv6_fwd, resnetv17_stage1_batchnorm6_gamma, resnetv17_stage1_batchnorm6_beta, resnetv17_stage1_batchnorm6_running_mean, resnetv17_stage1_batchnorm6_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 024 | Add                 | resnetv17_stage1__plus1       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm6_fwd, resnetv17_stage1_activation0 ]
+     |                     |                               |   OUT:[ resnetv17_stage1__plus1 ]
+-----+---------------------+-------------------------------+--------------------
+ 025 | Relu                | resnetv17_stage1_activation1  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1__plus1 ]
+     |                     |                               |   OUT:[ resnetv17_stage1_activation1 ]
+-----+---------------------+-------------------------------+--------------------
+ 026 | Conv                | resnetv17_stage1_conv7_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_activation1, resnetv17_stage1_conv7_weight, resnetv17_stage1_conv7_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 027 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv7_fwd, resnetv17_stage1_batchnorm7_gamma, resnetv17_stage1_batchnorm7_beta, resnetv17_stage1_batchnorm7_running_mean, resnetv17_stage1_batchnorm7_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 028 | Relu                | resnetv17_stage1_relu4_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm7_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage1_relu4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 029 | Conv                | resnetv17_stage1_conv8_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_relu4_fwd, resnetv17_stage1_conv8_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 030 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv8_fwd, resnetv17_stage1_batchnorm8_gamma, resnetv17_stage1_batchnorm8_beta, resnetv17_stage1_batchnorm8_running_mean, resnetv17_stage1_batchnorm8_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 031 | Relu                | resnetv17_stage1_relu5_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm8_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage1_relu5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 032 | Conv                | resnetv17_stage1_conv9_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_relu5_fwd, resnetv17_stage1_conv9_weight, resnetv17_stage1_conv9_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage1_conv9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 033 | BatchNormalization  | resnetv17_stage1_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_conv9_fwd, resnetv17_stage1_batchnorm9_gamma, resnetv17_stage1_batchnorm9_beta, resnetv17_stage1_batchnorm9_running_mean, resnetv17_stage1_batchnorm9_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage1_batchnorm9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 034 | Add                 | resnetv17_stage1__plus2       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_batchnorm9_fwd, resnetv17_stage1_activation1 ]
+     |                     |                               |   OUT:[ resnetv17_stage1__plus2 ]
+-----+---------------------+-------------------------------+--------------------
+ 035 | Relu                | resnetv17_stage1_activation2  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1__plus2 ]
+     |                     |                               |   OUT:[ resnetv17_stage1_activation2 ]
+-----+---------------------+-------------------------------+--------------------
+ 036 | Conv                | resnetv17_stage2_conv0_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_activation2, resnetv17_stage2_conv0_weight, resnetv17_stage2_conv0_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 037 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv0_fwd, resnetv17_stage2_batchnorm0_gamma, resnetv17_stage2_batchnorm0_beta, resnetv17_stage2_batchnorm0_running_mean, resnetv17_stage2_batchnorm0_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 038 | Relu                | resnetv17_stage2_relu0_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm0_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 039 | Conv                | resnetv17_stage2_conv1_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu0_fwd, resnetv17_stage2_conv1_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 040 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv1_fwd, resnetv17_stage2_batchnorm1_gamma, resnetv17_stage2_batchnorm1_beta, resnetv17_stage2_batchnorm1_running_mean, resnetv17_stage2_batchnorm1_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 041 | Relu                | resnetv17_stage2_relu1_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm1_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 042 | Conv                | resnetv17_stage2_conv2_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu1_fwd, resnetv17_stage2_conv2_weight, resnetv17_stage2_conv2_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 043 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv2_fwd, resnetv17_stage2_batchnorm2_gamma, resnetv17_stage2_batchnorm2_beta, resnetv17_stage2_batchnorm2_running_mean, resnetv17_stage2_batchnorm2_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 044 | Conv                | resnetv17_stage2_conv3_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage1_activation2, resnetv17_stage2_conv3_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 045 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv3_fwd, resnetv17_stage2_batchnorm3_gamma, resnetv17_stage2_batchnorm3_beta, resnetv17_stage2_batchnorm3_running_mean, resnetv17_stage2_batchnorm3_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 046 | Add                 | resnetv17_stage2__plus0       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm2_fwd, resnetv17_stage2_batchnorm3_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2__plus0 ]
+-----+---------------------+-------------------------------+--------------------
+ 047 | Relu                | resnetv17_stage2_activation0  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2__plus0 ]
+     |                     |                               |   OUT:[ resnetv17_stage2_activation0 ]
+-----+---------------------+-------------------------------+--------------------
+ 048 | Conv                | resnetv17_stage2_conv4_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_activation0, resnetv17_stage2_conv4_weight, resnetv17_stage2_conv4_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 049 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv4_fwd, resnetv17_stage2_batchnorm4_gamma, resnetv17_stage2_batchnorm4_beta, resnetv17_stage2_batchnorm4_running_mean, resnetv17_stage2_batchnorm4_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 050 | Relu                | resnetv17_stage2_relu2_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm4_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 051 | Conv                | resnetv17_stage2_conv5_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu2_fwd, resnetv17_stage2_conv5_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 052 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv5_fwd, resnetv17_stage2_batchnorm5_gamma, resnetv17_stage2_batchnorm5_beta, resnetv17_stage2_batchnorm5_running_mean, resnetv17_stage2_batchnorm5_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 053 | Relu                | resnetv17_stage2_relu3_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm5_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 054 | Conv                | resnetv17_stage2_conv6_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu3_fwd, resnetv17_stage2_conv6_weight, resnetv17_stage2_conv6_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 055 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv6_fwd, resnetv17_stage2_batchnorm6_gamma, resnetv17_stage2_batchnorm6_beta, resnetv17_stage2_batchnorm6_running_mean, resnetv17_stage2_batchnorm6_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 056 | Add                 | resnetv17_stage2__plus1       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm6_fwd, resnetv17_stage2_activation0 ]
+     |                     |                               |   OUT:[ resnetv17_stage2__plus1 ]
+-----+---------------------+-------------------------------+--------------------
+ 057 | Relu                | resnetv17_stage2_activation1  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2__plus1 ]
+     |                     |                               |   OUT:[ resnetv17_stage2_activation1 ]
+-----+---------------------+-------------------------------+--------------------
+ 058 | Conv                | resnetv17_stage2_conv7_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_activation1, resnetv17_stage2_conv7_weight, resnetv17_stage2_conv7_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 059 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv7_fwd, resnetv17_stage2_batchnorm7_gamma, resnetv17_stage2_batchnorm7_beta, resnetv17_stage2_batchnorm7_running_mean, resnetv17_stage2_batchnorm7_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 060 | Relu                | resnetv17_stage2_relu4_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm7_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 061 | Conv                | resnetv17_stage2_conv8_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu4_fwd, resnetv17_stage2_conv8_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 062 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv8_fwd, resnetv17_stage2_batchnorm8_gamma, resnetv17_stage2_batchnorm8_beta, resnetv17_stage2_batchnorm8_running_mean, resnetv17_stage2_batchnorm8_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 063 | Relu                | resnetv17_stage2_relu5_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm8_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 064 | Conv                | resnetv17_stage2_conv9_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu5_fwd, resnetv17_stage2_conv9_weight, resnetv17_stage2_conv9_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 065 | BatchNormalization  | resnetv17_stage2_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv9_fwd, resnetv17_stage2_batchnorm9_gamma, resnetv17_stage2_batchnorm9_beta, resnetv17_stage2_batchnorm9_running_mean, resnetv17_stage2_batchnorm9_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 066 | Add                 | resnetv17_stage2__plus2       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm9_fwd, resnetv17_stage2_activation1 ]
+     |                     |                               |   OUT:[ resnetv17_stage2__plus2 ]
+-----+---------------------+-------------------------------+--------------------
+ 067 | Relu                | resnetv17_stage2_activation2  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2__plus2 ]
+     |                     |                               |   OUT:[ resnetv17_stage2_activation2 ]
+-----+---------------------+-------------------------------+--------------------
+ 068 | Conv                | resnetv17_stage2_conv10_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_activation2, resnetv17_stage2_conv10_weight, resnetv17_stage2_conv10_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv10_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 069 | BatchNormalization  | resnetv17_stage2_batchnorm.0_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv10_fwd, resnetv17_stage2_batchnorm10_gamma, resnetv17_stage2_batchnorm10_beta, resnetv17_stage2_batchnorm10_running_mean, resnetv17_stage2_batchnorm10_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm10_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 070 | Relu                | resnetv17_stage2_relu6_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm10_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 071 | Conv                | resnetv17_stage2_conv11_fwd   | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu6_fwd, resnetv17_stage2_conv11_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv11_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 072 | BatchNormalization  | resnetv17_stage2_batchnorm.1_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv11_fwd, resnetv17_stage2_batchnorm11_gamma, resnetv17_stage2_batchnorm11_beta, resnetv17_stage2_batchnorm11_running_mean, resnetv17_stage2_batchnorm11_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm11_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 073 | Relu                | resnetv17_stage2_relu7_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm11_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage2_relu7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 074 | Conv                | resnetv17_stage2_conv12_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_relu7_fwd, resnetv17_stage2_conv12_weight, resnetv17_stage2_conv12_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage2_conv12_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 075 | BatchNormalization  | resnetv17_stage2_batchnorm.2_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_conv12_fwd, resnetv17_stage2_batchnorm12_gamma, resnetv17_stage2_batchnorm12_beta, resnetv17_stage2_batchnorm12_running_mean, resnetv17_stage2_batchnorm12_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage2_batchnorm12_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 076 | Add                 | resnetv17_stage2__plus3       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_batchnorm12_fwd, resnetv17_stage2_activation2 ]
+     |                     |                               |   OUT:[ resnetv17_stage2__plus3 ]
+-----+---------------------+-------------------------------+--------------------
+ 077 | Relu                | resnetv17_stage2_activation3  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2__plus3 ]
+     |                     |                               |   OUT:[ resnetv17_stage2_activation3 ]
+-----+---------------------+-------------------------------+--------------------
+ 078 | Conv                | resnetv17_stage3_conv0_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_activation3, resnetv17_stage3_conv0_weight, resnetv17_stage3_conv0_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 079 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv0_fwd, resnetv17_stage3_batchnorm0_gamma, resnetv17_stage3_batchnorm0_beta, resnetv17_stage3_batchnorm0_running_mean, resnetv17_stage3_batchnorm0_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 080 | Relu                | resnetv17_stage3_relu0_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm0_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 081 | Conv                | resnetv17_stage3_conv1_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu0_fwd, resnetv17_stage3_conv1_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 082 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv1_fwd, resnetv17_stage3_batchnorm1_gamma, resnetv17_stage3_batchnorm1_beta, resnetv17_stage3_batchnorm1_running_mean, resnetv17_stage3_batchnorm1_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 083 | Relu                | resnetv17_stage3_relu1_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm1_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 084 | Conv                | resnetv17_stage3_conv2_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu1_fwd, resnetv17_stage3_conv2_weight, resnetv17_stage3_conv2_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 085 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv2_fwd, resnetv17_stage3_batchnorm2_gamma, resnetv17_stage3_batchnorm2_beta, resnetv17_stage3_batchnorm2_running_mean, resnetv17_stage3_batchnorm2_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 086 | Conv                | resnetv17_stage3_conv3_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage2_activation3, resnetv17_stage3_conv3_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 087 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv3_fwd, resnetv17_stage3_batchnorm3_gamma, resnetv17_stage3_batchnorm3_beta, resnetv17_stage3_batchnorm3_running_mean, resnetv17_stage3_batchnorm3_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 088 | Add                 | resnetv17_stage3__plus0       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm2_fwd, resnetv17_stage3_batchnorm3_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3__plus0 ]
+-----+---------------------+-------------------------------+--------------------
+ 089 | Relu                | resnetv17_stage3_activation0  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3__plus0 ]
+     |                     |                               |   OUT:[ resnetv17_stage3_activation0 ]
+-----+---------------------+-------------------------------+--------------------
+ 090 | Conv                | resnetv17_stage3_conv4_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_activation0, resnetv17_stage3_conv4_weight, resnetv17_stage3_conv4_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 091 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv4_fwd, resnetv17_stage3_batchnorm4_gamma, resnetv17_stage3_batchnorm4_beta, resnetv17_stage3_batchnorm4_running_mean, resnetv17_stage3_batchnorm4_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 092 | Relu                | resnetv17_stage3_relu2_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm4_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 093 | Conv                | resnetv17_stage3_conv5_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu2_fwd, resnetv17_stage3_conv5_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 094 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv5_fwd, resnetv17_stage3_batchnorm5_gamma, resnetv17_stage3_batchnorm5_beta, resnetv17_stage3_batchnorm5_running_mean, resnetv17_stage3_batchnorm5_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 095 | Relu                | resnetv17_stage3_relu3_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm5_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 096 | Conv                | resnetv17_stage3_conv6_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu3_fwd, resnetv17_stage3_conv6_weight, resnetv17_stage3_conv6_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 097 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv6_fwd, resnetv17_stage3_batchnorm6_gamma, resnetv17_stage3_batchnorm6_beta, resnetv17_stage3_batchnorm6_running_mean, resnetv17_stage3_batchnorm6_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 098 | Add                 | resnetv17_stage3__plus1       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm6_fwd, resnetv17_stage3_activation0 ]
+     |                     |                               |   OUT:[ resnetv17_stage3__plus1 ]
+-----+---------------------+-------------------------------+--------------------
+ 099 | Relu                | resnetv17_stage3_activation1  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3__plus1 ]
+     |                     |                               |   OUT:[ resnetv17_stage3_activation1 ]
+-----+---------------------+-------------------------------+--------------------
+ 100 | Conv                | resnetv17_stage3_conv7_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_activation1, resnetv17_stage3_conv7_weight, resnetv17_stage3_conv7_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 101 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv7_fwd, resnetv17_stage3_batchnorm7_gamma, resnetv17_stage3_batchnorm7_beta, resnetv17_stage3_batchnorm7_running_mean, resnetv17_stage3_batchnorm7_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 102 | Relu                | resnetv17_stage3_relu4_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm7_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 103 | Conv                | resnetv17_stage3_conv8_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu4_fwd, resnetv17_stage3_conv8_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 104 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv8_fwd, resnetv17_stage3_batchnorm8_gamma, resnetv17_stage3_batchnorm8_beta, resnetv17_stage3_batchnorm8_running_mean, resnetv17_stage3_batchnorm8_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 105 | Relu                | resnetv17_stage3_relu5_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm8_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 106 | Conv                | resnetv17_stage3_conv9_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu5_fwd, resnetv17_stage3_conv9_weight, resnetv17_stage3_conv9_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 107 | BatchNormalization  | resnetv17_stage3_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv9_fwd, resnetv17_stage3_batchnorm9_gamma, resnetv17_stage3_batchnorm9_beta, resnetv17_stage3_batchnorm9_running_mean, resnetv17_stage3_batchnorm9_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 108 | Add                 | resnetv17_stage3__plus2       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm9_fwd, resnetv17_stage3_activation1 ]
+     |                     |                               |   OUT:[ resnetv17_stage3__plus2 ]
+-----+---------------------+-------------------------------+--------------------
+ 109 | Relu                | resnetv17_stage3_activation2  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3__plus2 ]
+     |                     |                               |   OUT:[ resnetv17_stage3_activation2 ]
+-----+---------------------+-------------------------------+--------------------
+ 110 | Conv                | resnetv17_stage3_conv10_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_activation2, resnetv17_stage3_conv10_weight, resnetv17_stage3_conv10_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv10_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 111 | BatchNormalization  | resnetv17_stage3_batchnorm.0_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv10_fwd, resnetv17_stage3_batchnorm10_gamma, resnetv17_stage3_batchnorm10_beta, resnetv17_stage3_batchnorm10_running_mean, resnetv17_stage3_batchnorm10_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm10_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 112 | Relu                | resnetv17_stage3_relu6_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm10_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 113 | Conv                | resnetv17_stage3_conv11_fwd   | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu6_fwd, resnetv17_stage3_conv11_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv11_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 114 | BatchNormalization  | resnetv17_stage3_batchnorm.1_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv11_fwd, resnetv17_stage3_batchnorm11_gamma, resnetv17_stage3_batchnorm11_beta, resnetv17_stage3_batchnorm11_running_mean, resnetv17_stage3_batchnorm11_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm11_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 115 | Relu                | resnetv17_stage3_relu7_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm11_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 116 | Conv                | resnetv17_stage3_conv12_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu7_fwd, resnetv17_stage3_conv12_weight, resnetv17_stage3_conv12_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv12_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 117 | BatchNormalization  | resnetv17_stage3_batchnorm.2_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv12_fwd, resnetv17_stage3_batchnorm12_gamma, resnetv17_stage3_batchnorm12_beta, resnetv17_stage3_batchnorm12_running_mean, resnetv17_stage3_batchnorm12_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm12_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 118 | Add                 | resnetv17_stage3__plus3       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm12_fwd, resnetv17_stage3_activation2 ]
+     |                     |                               |   OUT:[ resnetv17_stage3__plus3 ]
+-----+---------------------+-------------------------------+--------------------
+ 119 | Relu                | resnetv17_stage3_activation3  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3__plus3 ]
+     |                     |                               |   OUT:[ resnetv17_stage3_activation3 ]
+-----+---------------------+-------------------------------+--------------------
+ 120 | Conv                | resnetv17_stage3_conv13_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_activation3, resnetv17_stage3_conv13_weight, resnetv17_stage3_conv13_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv13_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 121 | BatchNormalization  | resnetv17_stage3_batchnorm.3_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv13_fwd, resnetv17_stage3_batchnorm13_gamma, resnetv17_stage3_batchnorm13_beta, resnetv17_stage3_batchnorm13_running_mean, resnetv17_stage3_batchnorm13_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm13_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 122 | Relu                | resnetv17_stage3_relu8_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm13_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 123 | Conv                | resnetv17_stage3_conv14_fwd   | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu8_fwd, resnetv17_stage3_conv14_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv14_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 124 | BatchNormalization  | resnetv17_stage3_batchnorm.4_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv14_fwd, resnetv17_stage3_batchnorm14_gamma, resnetv17_stage3_batchnorm14_beta, resnetv17_stage3_batchnorm14_running_mean, resnetv17_stage3_batchnorm14_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm14_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 125 | Relu                | resnetv17_stage3_relu9_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm14_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 126 | Conv                | resnetv17_stage3_conv15_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu9_fwd, resnetv17_stage3_conv15_weight, resnetv17_stage3_conv15_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv15_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 127 | BatchNormalization  | resnetv17_stage3_batchnorm.5_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv15_fwd, resnetv17_stage3_batchnorm15_gamma, resnetv17_stage3_batchnorm15_beta, resnetv17_stage3_batchnorm15_running_mean, resnetv17_stage3_batchnorm15_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm15_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 128 | Add                 | resnetv17_stage3__plus4       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm15_fwd, resnetv17_stage3_activation3 ]
+     |                     |                               |   OUT:[ resnetv17_stage3__plus4 ]
+-----+---------------------+-------------------------------+--------------------
+ 129 | Relu                | resnetv17_stage3_activation4  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3__plus4 ]
+     |                     |                               |   OUT:[ resnetv17_stage3_activation4 ]
+-----+---------------------+-------------------------------+--------------------
+ 130 | Conv                | resnetv17_stage3_conv16_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_activation4, resnetv17_stage3_conv16_weight, resnetv17_stage3_conv16_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv16_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 131 | BatchNormalization  | resnetv17_stage3_batchnorm.6_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv16_fwd, resnetv17_stage3_batchnorm16_gamma, resnetv17_stage3_batchnorm16_beta, resnetv17_stage3_batchnorm16_running_mean, resnetv17_stage3_batchnorm16_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm16_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 132 | Relu                | resnetv17_stage3_relu10_fwd   | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm16_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu10_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 133 | Conv                | resnetv17_stage3_conv17_fwd   | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu10_fwd, resnetv17_stage3_conv17_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv17_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 134 | BatchNormalization  | resnetv17_stage3_batchnorm.7_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv17_fwd, resnetv17_stage3_batchnorm17_gamma, resnetv17_stage3_batchnorm17_beta, resnetv17_stage3_batchnorm17_running_mean, resnetv17_stage3_batchnorm17_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm17_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 135 | Relu                | resnetv17_stage3_relu11_fwd   | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm17_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage3_relu11_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 136 | Conv                | resnetv17_stage3_conv18_fwd   | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_relu11_fwd, resnetv17_stage3_conv18_weight, resnetv17_stage3_conv18_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage3_conv18_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 137 | BatchNormalization  | resnetv17_stage3_batchnorm.8_ | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_conv18_fwd, resnetv17_stage3_batchnorm18_gamma, resnetv17_stage3_batchnorm18_beta, resnetv17_stage3_batchnorm18_running_mean, resnetv17_stage3_batchnorm18_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage3_batchnorm18_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 138 | Add                 | resnetv17_stage3__plus5       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_batchnorm18_fwd, resnetv17_stage3_activation4 ]
+     |                     |                               |   OUT:[ resnetv17_stage3__plus5 ]
+-----+---------------------+-------------------------------+--------------------
+ 139 | Relu                | resnetv17_stage3_activation5  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3__plus5 ]
+     |                     |                               |   OUT:[ resnetv17_stage3_activation5 ]
+-----+---------------------+-------------------------------+--------------------
+ 140 | Conv                | resnetv17_stage4_conv0_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_activation5, resnetv17_stage4_conv0_weight, resnetv17_stage4_conv0_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 141 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv0_fwd, resnetv17_stage4_batchnorm0_gamma, resnetv17_stage4_batchnorm0_beta, resnetv17_stage4_batchnorm0_running_mean, resnetv17_stage4_batchnorm0_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 142 | Relu                | resnetv17_stage4_relu0_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm0_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage4_relu0_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 143 | Conv                | resnetv17_stage4_conv1_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_relu0_fwd, resnetv17_stage4_conv1_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 144 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv1_fwd, resnetv17_stage4_batchnorm1_gamma, resnetv17_stage4_batchnorm1_beta, resnetv17_stage4_batchnorm1_running_mean, resnetv17_stage4_batchnorm1_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 145 | Relu                | resnetv17_stage4_relu1_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm1_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage4_relu1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 146 | Conv                | resnetv17_stage4_conv2_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_relu1_fwd, resnetv17_stage4_conv2_weight, resnetv17_stage4_conv2_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 147 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv2_fwd, resnetv17_stage4_batchnorm2_gamma, resnetv17_stage4_batchnorm2_beta, resnetv17_stage4_batchnorm2_running_mean, resnetv17_stage4_batchnorm2_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 148 | Conv                | resnetv17_stage4_conv3_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage3_activation5, resnetv17_stage4_conv3_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 149 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv3_fwd, resnetv17_stage4_batchnorm3_gamma, resnetv17_stage4_batchnorm3_beta, resnetv17_stage4_batchnorm3_running_mean, resnetv17_stage4_batchnorm3_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 150 | Add                 | resnetv17_stage4__plus0       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm2_fwd, resnetv17_stage4_batchnorm3_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage4__plus0 ]
+-----+---------------------+-------------------------------+--------------------
+ 151 | Relu                | resnetv17_stage4_activation0  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4__plus0 ]
+     |                     |                               |   OUT:[ resnetv17_stage4_activation0 ]
+-----+---------------------+-------------------------------+--------------------
+ 152 | Conv                | resnetv17_stage4_conv4_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_activation0, resnetv17_stage4_conv4_weight, resnetv17_stage4_conv4_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 153 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv4_fwd, resnetv17_stage4_batchnorm4_gamma, resnetv17_stage4_batchnorm4_beta, resnetv17_stage4_batchnorm4_running_mean, resnetv17_stage4_batchnorm4_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 154 | Relu                | resnetv17_stage4_relu2_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm4_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage4_relu2_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 155 | Conv                | resnetv17_stage4_conv5_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_relu2_fwd, resnetv17_stage4_conv5_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 156 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv5_fwd, resnetv17_stage4_batchnorm5_gamma, resnetv17_stage4_batchnorm5_beta, resnetv17_stage4_batchnorm5_running_mean, resnetv17_stage4_batchnorm5_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 157 | Relu                | resnetv17_stage4_relu3_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm5_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage4_relu3_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 158 | Conv                | resnetv17_stage4_conv6_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_relu3_fwd, resnetv17_stage4_conv6_weight, resnetv17_stage4_conv6_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 159 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv6_fwd, resnetv17_stage4_batchnorm6_gamma, resnetv17_stage4_batchnorm6_beta, resnetv17_stage4_batchnorm6_running_mean, resnetv17_stage4_batchnorm6_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm6_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 160 | Add                 | resnetv17_stage4__plus1       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm6_fwd, resnetv17_stage4_activation0 ]
+     |                     |                               |   OUT:[ resnetv17_stage4__plus1 ]
+-----+---------------------+-------------------------------+--------------------
+ 161 | Relu                | resnetv17_stage4_activation1  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4__plus1 ]
+     |                     |                               |   OUT:[ resnetv17_stage4_activation1 ]
+-----+---------------------+-------------------------------+--------------------
+ 162 | Conv                | resnetv17_stage4_conv7_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_activation1, resnetv17_stage4_conv7_weight, resnetv17_stage4_conv7_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 163 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv7_fwd, resnetv17_stage4_batchnorm7_gamma, resnetv17_stage4_batchnorm7_beta, resnetv17_stage4_batchnorm7_running_mean, resnetv17_stage4_batchnorm7_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm7_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 164 | Relu                | resnetv17_stage4_relu4_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm7_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage4_relu4_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 165 | Conv                | resnetv17_stage4_conv8_fwd    | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_relu4_fwd, resnetv17_stage4_conv8_weight ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 166 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv8_fwd, resnetv17_stage4_batchnorm8_gamma, resnetv17_stage4_batchnorm8_beta, resnetv17_stage4_batchnorm8_running_mean, resnetv17_stage4_batchnorm8_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm8_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 167 | Relu                | resnetv17_stage4_relu5_fwd    | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm8_fwd ]
+     |                     |                               |   OUT:[ resnetv17_stage4_relu5_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 168 | Conv                | resnetv17_stage4_conv9_fwd    | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_relu5_fwd, resnetv17_stage4_conv9_weight, resnetv17_stage4_conv9_bias ]
+     |                     |                               |   OUT:[ resnetv17_stage4_conv9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 169 | BatchNormalization  | resnetv17_stage4_batchnorm._f | Inputs: 5, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_conv9_fwd, resnetv17_stage4_batchnorm9_gamma, resnetv17_stage4_batchnorm9_beta, resnetv17_stage4_batchnorm9_running_mean, resnetv17_stage4_batchnorm9_running_var ]
+     |                     |                               |   OUT:[ resnetv17_stage4_batchnorm9_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 170 | Add                 | resnetv17_stage4__plus2       | Inputs: 2, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_batchnorm9_fwd, resnetv17_stage4_activation1 ]
+     |                     |                               |   OUT:[ resnetv17_stage4__plus2 ]
+-----+---------------------+-------------------------------+--------------------
+ 171 | Relu                | resnetv17_stage4_activation2  | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4__plus2 ]
+     |                     |                               |   OUT:[ resnetv17_stage4_activation2 ]
+-----+---------------------+-------------------------------+--------------------
+ 172 | GlobalAveragePool   | resnetv17_pool1_fwd           | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_stage4_activation2 ]
+     |                     |                               |   OUT:[ resnetv17_pool1_fwd ]
+-----+---------------------+-------------------------------+--------------------
+ 173 | Flatten             | flatten_473                   | Inputs: 1, Outputs: 1
+     |                     |                               |   IN: [ resnetv17_pool1_fwd ]
+     |                     |                               |   OUT:[ flatten_473 ]
+-----+---------------------+-------------------------------+--------------------
+ 174 | Gemm                | resnetv17_dense0_fwd          | Inputs: 3, Outputs: 1
+     |                     |                               |   IN: [ flatten_473, resnetv17_dense0_weight, resnetv17_dense0_bias ]
+     |                     |                               |   OUT:[ resnetv17_dense0_fwd ]
+-----+---------------------+-------------------------------+--------------------
